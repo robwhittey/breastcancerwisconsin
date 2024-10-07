@@ -1,20 +1,5 @@
 # breastcancerwisconsin
 Machine learning
-Table of Contents
-
-§1: Introduction	3
-§2: Data Overview	3
-§3: Discussion of the problem	5
-§4: Training	5
-§4.1: Logistic Regression	5
-§4.2: Genetic Algorithm	6
-§4.3: Decision Tree	6
-§4.4: Random Forest	7
-§4.5: Support Vector Machine	8
-§4.6: ANN – deep learning	9
-§5: Results	10
-§6: Conclusion	10
-References	11
 
 
 
@@ -24,10 +9,10 @@ References	11
 
 
 
-§1: Introduction
+<h2>§1: Introduction </h2>
 
 In this report, we will be looking at the classification of breast cancer diagnoses. We will be using a variety of machine learning systems and one deep learning model with the aim of finding the best system for classification. For each of the systems, we will be fine tuning the associated hyperparameters with the objective of obtaining the best prediction level that model can do. Beforehand, we will look at how pre-processing the data influences prediction scores and what training-testing proportion is best for our analysis.
-§2: Data Overview
+<h2>§2: Data Overview</h2>
 
 The data we will be using is a dataset of breast cancer diagnoses with their feature measurements. These features are extracted from fine needle aspirations of breast tissue mass and the dataset includes mean, standard error, and greatest values of 10 feature measurements of a cell nucleus. 
 
@@ -44,14 +29,14 @@ In the scatter plots above (see figure 2), we can see a number of graphs with a 
 
 
 Figure 3: Heatmap of regression levels found in dataset
-§3: Discussion of the problem
+<h2>§3: Discussion of the problem</h2>
 
 When it comes to machine learning for a classification problem such as this one, there are a number of options and avenues that would work and produce acceptable results. We may be able to produce a system which has an accuracy greater than 96% from the dataset, but with the dataset being relatively small (Ajiboye et al., 2015), our model may not be adequate as a sole means of diagnosis. But instead, will be viable as a proof of concept.
 
 Breast cancer, like many other diseases, are best caught early and our number one goal for this model is not just to increase the accuracy, but to reduce the number of False Negatives (FN) and False Positives (FP). Specifically, reducing the number of False Negatives is more important as we want to reduce the number of patients who have undiagnosed cancer. We will therefore focus on the accuracy of the model, the precision of the model, and the recall. The best system will be the one which has the greatest of each of these scores.
 
 
-§4: Training 
+<h2>§4: Training </h2>
 
 In this section, we will be looking at six different machine learning models and fine tuning them to produce the best of each, ready for comparison. But first, we need to separate the data into a training and testing dataset and find the best setup for the data. 
 
@@ -66,11 +51,11 @@ The logistic regression model works by finding linear combinations of the featur
 
 Figure 4: Logistic regression with ‘newton-cg’ solver. Natural data (left) and normalised data (right).
 
-§4.2: Genetic Algorithm
+<h3>§4.2: Genetic Algorithm</h3>
 
 Genetic Algorithms are based on the Theory of Evolution and take random mutations and natural selection into account to produce the ‘fittest’ model. It begins with a Logistic Regression model with variables such as number of generations, number of parents and mutation rate. Setting these variables to 20 generation, 10 parents and a mutation rate of 0.01, produces an initial accuracy of 0.982 (3.s.f), precision of 0.963 (3.s.f), and recall of 0.988 (3.s.f). The accuracy and precision improve over generations with a final accuracy score of 0.991 and precision of 1.00. Although, recall did not improve and stayed the same throughout.
 
-§4.3: Decision Tree
+<h3>§4.3: Decision Tree</h3>
 
 Decision trees use conditional nodes at branching points which lead to ‘leaves’ as an output. The depth of a decision tree can be set beforehand but for this test, we will compare the original tree with a pruned tree. 
 
@@ -81,14 +66,14 @@ As we can see from the evaluation above (figure 4), the pruned tree produced a m
 
 Figure 6: Pruned decision tree plot of how the model classifies.
 
-§4.4: Random Forest
+<h3>§4.4: Random Forest</h3>
 
 Random forests are made of many decision trees (see §4.3: Decision tree) which are made at random. The classification is decided by the most popular classification across the whole forest of trees. Unexpectedly, the metrics for this model supersede that of the decision tree with a 2% gain in accuracy, 6% gain in precision and 1% gain in recall.
 
 
 Figure 7: Random forest evaluation.
 
-§4.5: Support Vector Machine
+<h3>§4.5: Support Vector Machine</h3>
 
 The Support Vector Machine (SVM) allows the use of different kernels to aid classification with regression. We will look at the linear, polynomial, radial basis function (RBF), and sigmoid kernel. For some of these kernels, we were able to tune the hyperparameters of the function to produce higher metric values. The results of each are below (see figure 7). The best by far was the linear kernel with a C value of 0.2.
 
@@ -98,7 +83,7 @@ Figure 8: SVM with linear (top left), polynomial (top right), RBF (bottom left) 
  sigmoid (bottom right) kernels.
 
 
-§4.6: ANN – deep learning
+<h3>§4.6: ANN – deep learning</h3>
 
 To further our analysis, we will move away from machine learning systems and use a simple deep learning model. Artificial Neural Networks (ANN) are based on the neural networks found in the brain with inter-connecting neurons with inputs and outputs and associated weights. ANN use hyperparameters such as learning rates and epochs to help train the model. The model sends batches of data back and forth through the network, adjusting weights as it does so to improve the accuracy of the prediction. Below (see figure 8), is the architecture of the ANN with an input layer, a single hidden layer, and an output layer. 
 
@@ -113,14 +98,14 @@ Figure 10: Output evaluation of ANN model and confusion matrix.
 
 
 
-§5: Results
+<h2>§5: Results</h2>
 
 After training the models and evaluating each one, we can now compare the results of the metric scores and decide on the best model. As we can see from the table below (see figure 10), overall, the genetic algorithm performed the best throughout the metric scores. 
 
 
 Figure 11: Table comparing the metrics of each model
 
-§6: Conclusion
+<h2>§6: Conclusion</h2>
 
 In §3: Discussion of the problem, we highlighted the importance of reducing the level of False Negative predictions which meant we wanted a higher recall score for classification. The genetic algorithm came out on top with all metrics and as for recall, we found logistic regression and ANN’s also produced the same recall score as genetic algorithms but with lower accuracy and precision (see figure 10). 
 
@@ -131,7 +116,7 @@ However, for a system such as this to be fully utilised in the medical field, an
 
 
 
-References
+<h2>References</h2>
 
 Ajiboye, A.R., Abdullah-Arshah, R., Qin, H. and Isah-Kebbe, H. (2015). EVALUATING THE EFFECT OF DATASET SIZE ON PREDICTIVE MODEL USING SUPERVISED LEARNING TECHNIQUE. International Journal of Computer Systems & Software Engineering, 1(1), pp.75–84. doi:10.15282/ijsecs.1.2015.6.0006.
 Edgar, T.W. and Manz, D.O. (2017). Logistic Regression - an overview | ScienceDirect Topics. [online] www.sciencedirect.com. Available at: https://www.sciencedirect.com/topics/computer-science/logistic-regression.
