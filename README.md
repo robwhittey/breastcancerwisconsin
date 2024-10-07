@@ -18,16 +18,17 @@ The data we will be using is a dataset of breast cancer diagnoses with their fea
 
 There are a total of 569 measurements in the dataset with each having a total of 30 features and a corresponding diagnosis. (M: Malignant, B: Benign). There are 357 ‘Benign’ and 212 ‘Malignant’ diagnoses. This is considered an unbalanced dataset which may hinder results as the algorithms may favour the most occurring. 
 
-
+<img width="637" alt="Screenshot 2024-10-07 at 22 20 12" src="https://github.com/user-attachments/assets/90f5720a-be79-4c81-a8ee-3a1bc0180893">
 Figure 1: Bar graph of the number of each diagnosis (212 Malignant and 357 Benign).
 
 Finally, we will look to see if there are any correlations between the variables. The machine learning system will be able to analyse this in multidimensions but for now, we will look at the data in 2 dimensional and observe. 
 
+<img width="648" alt="Screenshot 2024-10-07 at 22 21 22" src="https://github.com/user-attachments/assets/46117d82-45c2-4192-8e88-a070395549a8">
 Figure 2: Scatter pair plot of all the variables
 
 In the scatter plots above (see figure 2), we can see a number of graphs with a correlation between the two variables. This is confirmed with the heatmap below (see figure 3) which gives a numerical value on the correlation level of each variable against one another. This bodes well for our analysis, and we should expect high accuracy for some of our models. Although, correlations found here may not be useful and have no relevance to our classification. 
 
-
+<img width="537" alt="Screenshot 2024-10-07 at 22 22 04" src="https://github.com/user-attachments/assets/0d95b28c-fc95-4ea4-945e-5eb07be4aeb3">
 Figure 3: Heatmap of regression levels found in dataset
 <h2>§3: Discussion of the problem</h2>
 
@@ -48,7 +49,7 @@ Initial testing has found, using the Logistic Regression (see §4.1 Logistic Reg
 
 The logistic regression model works by finding linear combinations of the features (Edgar and Manz, 2017). The model has many solvers and one can change the maximum number of iterations to allow convergence. In testing, when using the natural data that had not been normalised, we see differences when we use different solvers and higher iterations. But when we use normalised data, all solvers and iteration levels (above 500) produce the same metric results and confusion matrix.
 
-
+<img width="763" alt="Screenshot 2024-10-07 at 22 22 59" src="https://github.com/user-attachments/assets/0784c16e-2583-4b94-840a-4a112131aff7">
 Figure 4: Logistic regression with ‘newton-cg’ solver. Natural data (left) and normalised data (right).
 
 <h3>§4.2: Genetic Algorithm</h3>
@@ -59,10 +60,12 @@ Genetic Algorithms are based on the Theory of Evolution and take random mutation
 
 Decision trees use conditional nodes at branching points which lead to ‘leaves’ as an output. The depth of a decision tree can be set beforehand but for this test, we will compare the original tree with a pruned tree. 
 
+<img width="759" alt="Screenshot 2024-10-07 at 22 23 48" src="https://github.com/user-attachments/assets/1ebb9741-37e9-4b4e-b555-7914ecee0650">
 
 Figure 5: Decision tree evaluation with original (left) and pruned (right) using ccp_alpha=0.005.
 
 As we can see from the evaluation above (figure 4), the pruned tree produced a much better model with a 4% increase in accuracy and precision. Unfortunately, the recall only increased by 1%. Below (see figure 5), is an insight into how the model works and decides on its classification. 
+<img width="754" alt="Screenshot 2024-10-07 at 22 24 16" src="https://github.com/user-attachments/assets/c7ca7d8f-880d-49ec-9ab5-45ceeaabfce3">
 
 Figure 6: Pruned decision tree plot of how the model classifies.
 
@@ -70,6 +73,7 @@ Figure 6: Pruned decision tree plot of how the model classifies.
 
 Random forests are made of many decision trees (see §4.3: Decision tree) which are made at random. The classification is decided by the most popular classification across the whole forest of trees. Unexpectedly, the metrics for this model supersede that of the decision tree with a 2% gain in accuracy, 6% gain in precision and 1% gain in recall.
 
+<img width="386" alt="Screenshot 2024-10-07 at 22 24 43" src="https://github.com/user-attachments/assets/556b45ea-677b-41f9-b31a-a665b61320e0">
 
 Figure 7: Random forest evaluation.
 
@@ -78,7 +82,9 @@ Figure 7: Random forest evaluation.
 The Support Vector Machine (SVM) allows the use of different kernels to aid classification with regression. We will look at the linear, polynomial, radial basis function (RBF), and sigmoid kernel. For some of these kernels, we were able to tune the hyperparameters of the function to produce higher metric values. The results of each are below (see figure 7). The best by far was the linear kernel with a C value of 0.2.
 
 
- 
+<img width="757" alt="Screenshot 2024-10-07 at 22 25 12" src="https://github.com/user-attachments/assets/dfb7365e-6ffa-4140-b4b3-7fad1f8a240e">
+<img width="762" alt="Screenshot 2024-10-07 at 22 25 33" src="https://github.com/user-attachments/assets/c25575a4-fe8d-4044-93cc-f46a31a36ee3">
+
 Figure 8: SVM with linear (top left), polynomial (top right), RBF (bottom left) and
  sigmoid (bottom right) kernels.
 
@@ -87,11 +93,13 @@ Figure 8: SVM with linear (top left), polynomial (top right), RBF (bottom left) 
 
 To further our analysis, we will move away from machine learning systems and use a simple deep learning model. Artificial Neural Networks (ANN) are based on the neural networks found in the brain with inter-connecting neurons with inputs and outputs and associated weights. ANN use hyperparameters such as learning rates and epochs to help train the model. The model sends batches of data back and forth through the network, adjusting weights as it does so to improve the accuracy of the prediction. Below (see figure 8), is the architecture of the ANN with an input layer, a single hidden layer, and an output layer. 
 
+<img width="819" alt="Screenshot 2024-10-07 at 22 25 57" src="https://github.com/user-attachments/assets/1d28a1a8-b335-4617-a246-f6d1d77d37de">
 
 Figure 9: Architecture of ANN model with 3 layers
 
 Setting the epoch level to 1000, the model was able to achieve an accuracy of 97.95% and a loss of 0.1377 for the training data. When using the test, we gained an accuracy of 96.9%, a precision of 92.9%, and a recall of 98.8%. 
 
+<img width="965" alt="Screenshot 2024-10-07 at 22 26 18" src="https://github.com/user-attachments/assets/3bbac7af-72b9-4c64-a211-4d1a556d84ba">
 
 Figure 10: Output evaluation of ANN model and confusion matrix.
 
@@ -102,6 +110,7 @@ Figure 10: Output evaluation of ANN model and confusion matrix.
 
 After training the models and evaluating each one, we can now compare the results of the metric scores and decide on the best model. As we can see from the table below (see figure 10), overall, the genetic algorithm performed the best throughout the metric scores. 
 
+<img width="769" alt="Screenshot 2024-10-07 at 22 26 37" src="https://github.com/user-attachments/assets/36e3a530-30d9-49e9-ad01-1ee8be2e4dfd">
 
 Figure 11: Table comparing the metrics of each model
 
